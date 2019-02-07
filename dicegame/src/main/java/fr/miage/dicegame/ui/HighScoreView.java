@@ -14,7 +14,8 @@ public class HighScoreView implements View {
 
 		final ListView<Entree> list = new ListView<>();
 		list.setItems(HighScore.getInstance().getEntreesObservable());
-
+		list.setMinWidth(350);
+		
 		hb.getChildren().add(list);
 		return hb;
 	}

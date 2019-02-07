@@ -1,6 +1,5 @@
 package fr.miage.dicegame.ui;
 
-
 import fr.miage.dicegame.core.DiceGame;
 import fr.miage.dicegame.core.Joueur;
 import javafx.geometry.Insets;
@@ -15,6 +14,11 @@ import javafx.scene.layout.Pane;
 
 public class DeView implements View {
 
+	private Label lancerNumeroUn;
+	private Label lancerNumeroDeux;
+	private Label tour;
+	private Label scoreActuel;
+
 	@Override
 	public Pane getPane() {
 		final GridPane gp = new GridPane();
@@ -25,13 +29,23 @@ public class DeView implements View {
 
 		final TextField nomJoueur = new TextField();
 
-		final Label lancerNumeroUn = new Label("Numéro du premier dé : X");
-		final Label lancerNumeroDeux = new Label("Numéro du second dé : X");
+		final Pane saut1 = new Pane();
+		saut1.minHeight(30);
+
+		lancerNumeroUn = new Label("Numéro du premier dé :");
+		lancerNumeroDeux = new Label("Numéro du second dé :");
+
+		final Pane saut2 = new Pane();
+		saut2.minHeight(30);
+
+		tour = new Label("Tour :");
+		scoreActuel = new Label("Score :");
 
 		final Button jouer = new Button("Jouer");
+		jouer.setMinWidth(300);
 		jouer.setOnAction(value -> {
 
-			//Vérification nom du joueur non vide
+			// Vérification nom du joueur non vide
 			if (nomJoueur.getText().trim().isEmpty()) {
 				Alert a2 = new Alert(AlertType.WARNING);
 				a2.setTitle("Attention");
@@ -43,8 +57,10 @@ public class DeView implements View {
 					DiceGame.getInstance().start(nomJoueur.getText());
 					nomJoueur.setDisable(true);
 					DiceGame.getInstance().getJoueur().jouer();
+					updateLabel();
 				} else {
 					j.jouer();
+					updateLabel();
 					if (j.getTour() == 10) {
 
 						Alert a2 = new Alert(AlertType.INFORMATION);
@@ -61,11 +77,28 @@ public class DeView implements View {
 
 		gp.add(new Label("Nom du joueur "), 0, 0);
 		gp.add(nomJoueur, 1, 0);
-		gp.add(lancerNumeroUn, 0, 1);
-		gp.add(lancerNumeroDeux, 0, 2);
-		gp.add(jouer, 0, 3, 2, 1);
+
+		gp.add(saut1, 0, 1);
+
+		gp.add(tour, 0, 2);
+		gp.add(scoreActuel, 0, 3);
+
+		gp.add(saut2, 0, 4);
+
+		gp.add(lancerNumeroUn, 0, 5);
+		gp.add(lancerNumeroDeux, 0, 6);
+
+		gp.add(jouer, 0, 7, 2, 1);
 
 		return gp;
+	}
+
+	private void updateLabel() {
+		Joueur j = DiceGame.getInstance().getJoueur();
+		lancerNumeroUn.setText("Numéro du premier dé : " + DiceGame.getInstance().getDes(0).getValeur());
+		lancerNumeroDeux.setText("Numéro du second dé : "+ DiceGame.getInstance().getDes(1).getValeur());
+		tour.setText("Tour : " + j.getTour());
+		scoreActuel.setText("Score : " + j.getScore());
 	}
 
 }

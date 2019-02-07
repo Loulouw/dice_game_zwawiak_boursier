@@ -28,7 +28,8 @@ public class App extends Application {
 		tabPane.getTabs().add(createTabPane("HighScore", new HighScoreView()));
 
 		root.getChildren().add(tabPane);
-		primaryStage.setScene(new Scene(root, 500, 450));
+		primaryStage.setScene(new Scene(root, 350, 250));
+		primaryStage.setResizable(false);
 		primaryStage.show();
 
 	}
