@@ -9,9 +9,17 @@ import redis.clients.jedis.Jedis;
 
 public class DatabaseRedis extends Database {
 
+	private Jedis jedis;
+	
+	public DatabaseRedis() {
+		jedis = new Jedis("hostname.redislabs.com", 6379);
+	    jedis.auth("password");
+	}
+	
+	
 	@Override
 	public void load() {
-		try (Jedis jedis = new Jedis()) {
+		try {
 			List<Entree> entrees = new ArrayList<>();
 
 			String res = "";
@@ -37,7 +45,7 @@ public class DatabaseRedis extends Database {
 
 	@Override
 	public void save() {
-		try (Jedis jedis = new Jedis()) {
+		try {
 			for (Entree e : HighScore.getInstance().getEntrees()) {
 				jedis.lpush("Id", e.getId() + "");
 				jedis.lpush("Name", e.getName());
