@@ -26,6 +26,10 @@ public abstract class HighScore extends Observable implements Serializable{
 		return this.entrees;
 	}
 	
+	public void setEntrees(ArrayList<Entree> entree) {
+		this.entrees = entree;
+	}
+	
 	public abstract void which();
 
 	public static HighScore getInstance() {

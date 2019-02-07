@@ -8,7 +8,8 @@ public class Entree implements Serializable{
 	private String name;
 	private int score;
 	
-	public Entree(String name, int score) {
+	public Entree(long id, String name, int score) {
+		this.id = id;
 		this.name=name;
 		this.score=score;
 	}
