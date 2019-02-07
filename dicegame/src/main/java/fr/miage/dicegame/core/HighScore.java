@@ -32,7 +32,7 @@ public final class HighScore extends Observable implements Serializable {
 		entreesObservable.add(entree);
 		sortList();
 
-		DatabaseSingleton.getInstance().getDatabase().whoiam();
+		DatabaseSingleton.getInstance().getDatabase().save();
 		this.setChanged();
 		this.notifyObservers();
 	}

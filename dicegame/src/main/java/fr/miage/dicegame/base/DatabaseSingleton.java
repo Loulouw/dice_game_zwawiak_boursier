@@ -9,8 +9,8 @@ public final class DatabaseSingleton {
 	private Database database;
 	
 	private DatabaseSingleton() {
-		Random r = new Random();
-		switch (r.nextInt(3)) {
+		int r = new Random().nextInt(3);
+		switch (2) {
 		case 0:
 			database = DatabaseFactory.getDatabase(new RedisFactory());
 			break;
@@ -21,7 +21,7 @@ public final class DatabaseSingleton {
 			database = DatabaseFactory.getDatabase(new JdbcFactory());
 			break;
 		default:
-			database = DatabaseFactory.getDatabase(new JdbcFactory());
+			database = DatabaseFactory.getDatabase(new SrFactory());
 			break;
 		}
 	}

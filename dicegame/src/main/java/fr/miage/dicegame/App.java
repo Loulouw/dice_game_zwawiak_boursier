@@ -1,5 +1,7 @@
 package fr.miage.dicegame;
 
+import fr.miage.dicegame.base.DatabaseSingleton;
+import fr.miage.dicegame.core.HighScore;
 import fr.miage.dicegame.ui.DeView;
 import fr.miage.dicegame.ui.HighScoreView;
 import fr.miage.dicegame.ui.View;
@@ -19,6 +21,8 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		DatabaseSingleton.getInstance().getDatabase().load();
+		
 		primaryStage.setTitle("Jeu de dé");
 		Pane root = new StackPane();
 
