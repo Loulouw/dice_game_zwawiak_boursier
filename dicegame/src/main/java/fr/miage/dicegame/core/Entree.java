@@ -4,13 +4,32 @@ import java.io.Serializable;
 
 public class Entree implements Serializable{
 
-	public String name;
-	public int score;
+	private long id;
+	private String name;
+	private int score;
 	
 	public Entree(String name, int score) {
 		this.name=name;
 		this.score=score;
 	}
+
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 
 	/**
 	 * @return the name

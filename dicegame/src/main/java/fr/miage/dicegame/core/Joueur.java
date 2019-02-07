@@ -17,11 +17,11 @@ public class Joueur extends Observable{
 	}
 	
 	private De de1(){
-		return null;
+		return DiceGame.getInstance().getDes(0);
 	}
 	
 	private De de2() {
-		return null;
+		return DiceGame.getInstance().getDes(1);
 	}
 	
 	public void jouer() {

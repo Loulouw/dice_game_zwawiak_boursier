@@ -3,13 +3,14 @@ package fr.miage.dicegame.core;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Observable;
 
 public abstract class HighScore extends Observable implements Serializable{
 	
-	public static HighScore highscore = null;
+	protected static HighScore highscore = null;
 	
-	public ArrayList<Entree> entrees = new ArrayList<Entree>();
+	protected ArrayList<Entree> entrees = new ArrayList<Entree>();
 	
 	public abstract void load();
 	
@@ -21,8 +22,8 @@ public abstract class HighScore extends Observable implements Serializable{
 		this.notifyObservers();
 	}
 	
-	public Enumeration getEntrees() {
-		return null;
+	public List<Entree> getEntrees() {
+		return this.entrees;
 	}
 	
 	public abstract void which();
