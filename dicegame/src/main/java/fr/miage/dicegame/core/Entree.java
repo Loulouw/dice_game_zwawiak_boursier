@@ -2,17 +2,18 @@ package fr.miage.dicegame.core;
 
 import java.io.Serializable;
 
-public class Entree implements Serializable{
+public class Entree implements Serializable {
 
+	private static final long serialVersionUID = -6930687805229035553L;
+	
 	private long id;
 	private String name;
 	private int score;
 
-
 	public Entree(long id, String name, int score) {
 		this.id = id;
-		this.name=name;
-		this.score=score;
+		this.name = name;
+		this.score = score;
 	}
 
 	/**
@@ -22,16 +23,13 @@ public class Entree implements Serializable{
 		return id;
 	}
 
-
-
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
 
 	/**
 	 * @return the name
@@ -41,7 +39,8 @@ public class Entree implements Serializable{
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -55,10 +54,11 @@ public class Entree implements Serializable{
 	}
 
 	/**
-	 * @param score the score to set
+	 * @param score
+	 *            the score to set
 	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 }

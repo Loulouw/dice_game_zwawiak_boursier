@@ -2,35 +2,36 @@ package fr.miage.dicegame.core;
 
 import java.util.Observable;
 
-public class Joueur extends Observable{
+public class Joueur extends Observable {
 
 	private String name;
 	private int score;
 	private int tour;
-	private final int POINT = 7;
-	private final int GAIN = 10;
-	
+
+	private static final int POINT = 7;
+	private static final int GAIN = 10;
+
 	public Joueur(String name) {
 		this.name = name;
 		this.score = 0;
 		this.tour = 0;
 	}
-	
-	private De de1(){
+
+	private De de1() {
 		return DiceGame.getInstance().getDes(0);
 	}
-	
+
 	private De de2() {
 		return DiceGame.getInstance().getDes(1);
 	}
-	
+
 	public void jouer() {
-		int d1=de1().roll();
-		int d2=de2().roll();
-		if ((d1+d2)==POINT) {
-		    setScore(score+GAIN);
+		int d1 = de1().roll();
+		int d2 = de2().roll();
+		if ((d1 + d2) == POINT) {
+			score += GAIN;
 		}
-		setTour(getTour()+1);
+		tour++;
 	}
 
 	/**
@@ -41,7 +42,8 @@ public class Joueur extends Observable{
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -55,7 +57,8 @@ public class Joueur extends Observable{
 	}
 
 	/**
-	 * @param score the score to set
+	 * @param score
+	 *            the score to set
 	 */
 	public void setScore(int score) {
 		this.score = score;
@@ -69,10 +72,11 @@ public class Joueur extends Observable{
 	}
 
 	/**
-	 * @param tour the tour to set
+	 * @param tour
+	 *            the tour to set
 	 */
 	public void setTour(int tour) {
 		this.tour = tour;
 	}
-	
+
 }

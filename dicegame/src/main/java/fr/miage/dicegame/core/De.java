@@ -6,10 +6,6 @@ public class De extends Observable {
 
 	private int valeur = 1;
 
-	public De() {
-
-	}
-
 	public int roll() {
 		setValeur((int) (Math.random() * (6 - 1)) + 1);
 		return getValeur();
