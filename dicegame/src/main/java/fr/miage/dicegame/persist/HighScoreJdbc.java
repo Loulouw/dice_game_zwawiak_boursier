@@ -2,7 +2,7 @@ package fr.miage.dicegame.persist;
 
 import fr.miage.dicegame.core.HighScore;
 
-public class HighScoreJdbc extends HighScore{
+public class HighScoreJdbc extends HighScore {
 
 	@Override
 	public void load() {
@@ -12,7 +12,7 @@ public class HighScoreJdbc extends HighScore{
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

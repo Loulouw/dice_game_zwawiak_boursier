@@ -10,27 +10,27 @@ import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
 import redis.clients.jedis.Jedis;
 
-public class HighScoreRedis extends HighScore{
+public class HighScoreRedis extends HighScore {
 
 	@Override
 	public void load() {
 		try {
 			Jedis jedis = new Jedis();
-			for(Entree e : highscore.getEntrees()) {
-				jedis.lpush("Id", e.getId()+"");
+			for (Entree e : highscore.getEntrees()) {
+				jedis.lpush("Id", e.getId() + "");
 				jedis.lpush("Name", e.getName());
-				jedis.lpush("Score", e.getScore()+"");
+				jedis.lpush("Score", e.getScore() + "");
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
