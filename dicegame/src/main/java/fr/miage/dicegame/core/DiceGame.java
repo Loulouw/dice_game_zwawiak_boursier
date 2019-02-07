@@ -1,7 +1,7 @@
 package fr.miage.dicegame.core;
 
 
-public class DiceGame {
+public final class DiceGame {
 
 	private static DiceGame dg = null;
 
@@ -15,7 +15,7 @@ public class DiceGame {
 		this.joueur = null;
 	}
 
-	public static DiceGame getInstance() {
+	public static synchronized DiceGame getInstance() {
 		if (dg == null) {
 			dg = new DiceGame();
 		}

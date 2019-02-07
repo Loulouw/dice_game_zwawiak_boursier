@@ -32,6 +32,12 @@ public class Joueur extends Observable {
 			score += GAIN;
 		}
 		tour++;
+		
+		if(tour == 10) {
+			long randomId = 1000000 + (long) (Math.random() * (9999999 - 1000000));
+			Entree e = new Entree(randomId, name, score);
+			HighScore.getInstance().ajouterEntree(e);
+		}
 	}
 
 	/**

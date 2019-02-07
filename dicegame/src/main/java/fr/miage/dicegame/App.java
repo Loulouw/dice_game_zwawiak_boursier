@@ -1,6 +1,7 @@
 package fr.miage.dicegame;
 
 import fr.miage.dicegame.ui.DeView;
+import fr.miage.dicegame.ui.HighScoreView;
 import fr.miage.dicegame.ui.View;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -24,6 +25,7 @@ public class App extends Application {
 		TabPane tabPane = new TabPane();
 
 		tabPane.getTabs().add(createTabPane("Jeu", new DeView()));
+		tabPane.getTabs().add(createTabPane("HighScore", new HighScoreView()));
 
 		root.getChildren().add(tabPane);
 		primaryStage.setScene(new Scene(root, 500, 450));

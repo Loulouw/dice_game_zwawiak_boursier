@@ -1,6 +1,5 @@
 package fr.miage.dicegame.ui;
 
-import java.util.Optional;
 
 import fr.miage.dicegame.core.DiceGame;
 import fr.miage.dicegame.core.Joueur;
@@ -9,7 +8,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -32,34 +30,30 @@ public class DeView implements View {
 
 		final Button jouer = new Button("Jouer");
 		jouer.setOnAction(value -> {
-			Alert a = new Alert(AlertType.CONFIRMATION);
-			a.setTitle("Confirmation");
-			a.setHeaderText("Voulez-vous lancer les dés ?");
-			Optional<ButtonType> result = a.showAndWait();
-			if (result.get() == ButtonType.OK) {
-				if (nomJoueur.getText().trim().isEmpty()) {
-					Alert a2 = new Alert(AlertType.WARNING);
-					a2.setTitle("Attention");
-					a2.setHeaderText("Le nom du joueur ne peut pas être vide");
-					a2.show();
+
+			//Vérification nom du joueur non vide
+			if (nomJoueur.getText().trim().isEmpty()) {
+				Alert a2 = new Alert(AlertType.WARNING);
+				a2.setTitle("Attention");
+				a2.setHeaderText("Le nom du joueur ne peut pas être vide");
+				a2.show();
+			} else {
+				Joueur j = DiceGame.getInstance().getJoueur();
+				if (j == null || j.getTour() == 0) {
+					DiceGame.getInstance().start(nomJoueur.getText());
+					nomJoueur.setDisable(true);
+					DiceGame.getInstance().getJoueur().jouer();
 				} else {
-					Joueur j = DiceGame.getInstance().getJoueur();
-					if (j == null || j.getTour() == 0) {
-						DiceGame.getInstance().start(nomJoueur.getText());
-						nomJoueur.setDisable(true);
-						j.jouer();
-					} else {
-						j.jouer();
-						if (j.getTour() == 9) {
+					j.jouer();
+					if (j.getTour() == 10) {
 
-							Alert a2 = new Alert(AlertType.INFORMATION);
-							a2.setTitle("BRAVO");
-							a2.setHeaderText("Bravo " + j.getName() + " tu as fais un score de " + j.getScore());
-							a2.show();
+						Alert a2 = new Alert(AlertType.INFORMATION);
+						a2.setTitle("BRAVO");
+						a2.setHeaderText("Bravo " + j.getName() + " tu as fais un score de " + j.getScore());
+						a2.show();
 
-							DiceGame.getInstance().setJoueur(null);
-							nomJoueur.setDisable(false);
-						}
+						DiceGame.getInstance().setJoueur(null);
+						nomJoueur.setDisable(false);
 					}
 				}
 			}

@@ -61,4 +61,8 @@ public class Entree implements Serializable {
 		this.score = score;
 	}
 
+	
+	public String toString() {
+		return score + " - " + name;
+	}
 }

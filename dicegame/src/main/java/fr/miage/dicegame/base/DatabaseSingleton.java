@@ -26,11 +26,20 @@ public final class DatabaseSingleton {
 		}
 	}
 	
-	public synchronized DatabaseSingleton getInstance() {
+	public static synchronized DatabaseSingleton getInstance() {
 		if(databaseSingleton == null) {
 			databaseSingleton = new DatabaseSingleton();
 		}
 		return databaseSingleton;
 	}
+
+	public Database getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(Database database) {
+		this.database = database;
+	}
+	
 	
 }
