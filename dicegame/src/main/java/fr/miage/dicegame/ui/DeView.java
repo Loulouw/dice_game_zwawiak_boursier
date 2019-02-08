@@ -1,5 +1,6 @@
 package fr.miage.dicegame.ui;
 
+import fr.miage.dicegame.base.DatabaseSingleton;
 import fr.miage.dicegame.core.DiceGame;
 import fr.miage.dicegame.core.Joueur;
 import javafx.geometry.Insets;
@@ -74,6 +75,8 @@ public class DeView implements View {
 				}
 			}
 		});
+		
+		final Label bdd = new Label("Utilisation de : " + DatabaseSingleton.getInstance().getDatabase().whoiam());
 
 		gp.add(new Label("Nom du joueur "), 0, 0);
 		gp.add(nomJoueur, 1, 0);
@@ -89,6 +92,8 @@ public class DeView implements View {
 		gp.add(lancerNumeroDeux, 0, 6);
 
 		gp.add(jouer, 0, 7, 2, 1);
+		
+		gp.add(bdd, 0, 8);
 
 		return gp;
 	}

@@ -61,8 +61,8 @@ public class DatabaseRedis extends Database {
 	}
 
 	@Override
-	public void whoiam() {
-		System.out.println("Redis");
+	public String whoiam() {
+		return "Redis";
 	}
 
 }

@@ -12,13 +12,13 @@ public final class DatabaseSingleton {
 		int r = new Random().nextInt(3);
 		switch (r) {
 		case 0:
-			database = DatabaseFactory.getDatabase(new RedisFactory());
+			database = DatabaseFactory.getDatabase(new JdbcFactory());
 			break;
 		case 1:
 			database = DatabaseFactory.getDatabase(new SrFactory());
 			break;
 		case 2:
-			database = DatabaseFactory.getDatabase(new JdbcFactory());
+			database = DatabaseFactory.getDatabase(new RedisFactory());
 			break;
 		default:
 			database = DatabaseFactory.getDatabase(new SrFactory());

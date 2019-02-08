@@ -1,7 +1,6 @@
 package fr.miage.dicegame;
 
 import fr.miage.dicegame.base.DatabaseSingleton;
-import fr.miage.dicegame.core.HighScore;
 import fr.miage.dicegame.ui.DeView;
 import fr.miage.dicegame.ui.HighScoreView;
 import fr.miage.dicegame.ui.RegleView;
@@ -34,7 +33,7 @@ public class App extends Application {
 		tabPane.getTabs().add(createTabPane("Règle", new RegleView()));
 
 		root.getChildren().add(tabPane);
-		primaryStage.setScene(new Scene(root, 350, 250));
+		primaryStage.setScene(new Scene(root, 350, 260));
 		primaryStage.setResizable(false);
 		primaryStage.show();
 

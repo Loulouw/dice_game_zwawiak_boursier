@@ -1,6 +1,5 @@
 package fr.miage.dicegame.core;
 
-import java.util.Observable;
 
 public class Joueur {
 

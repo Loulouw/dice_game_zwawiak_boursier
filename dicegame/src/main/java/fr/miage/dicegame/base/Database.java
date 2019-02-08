@@ -6,5 +6,5 @@ public abstract class Database {
 	
 	public abstract void save();
 	
-	public abstract void whoiam();
+	public abstract String whoiam();
 }

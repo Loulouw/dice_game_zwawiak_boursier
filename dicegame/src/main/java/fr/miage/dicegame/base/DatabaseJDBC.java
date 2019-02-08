@@ -56,8 +56,8 @@ public class DatabaseJDBC extends Database {
 	}
 
 	@Override
-	public void whoiam() {
-		System.out.println("jdbc");
+	public String whoiam() {
+		return "MariaDB";
 	}
 
 }

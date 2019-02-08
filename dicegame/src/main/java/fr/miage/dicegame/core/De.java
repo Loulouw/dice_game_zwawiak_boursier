@@ -1,7 +1,5 @@
 package fr.miage.dicegame.core;
 
-import java.util.Observable;
-
 public class De {
 
 	private int valeur = 1;

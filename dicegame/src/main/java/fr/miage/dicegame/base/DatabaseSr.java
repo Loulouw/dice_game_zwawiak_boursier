@@ -40,8 +40,8 @@ public class DatabaseSr extends Database {
 	}
 
 	@Override
-	public void whoiam() {
-		System.out.println("SR");
+	public String whoiam() {
+		return "Serializable";
 	}
 
 }
