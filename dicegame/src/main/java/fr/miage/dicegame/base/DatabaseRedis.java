@@ -42,6 +42,7 @@ public class DatabaseRedis extends Database {
 			e.printStackTrace();
 		}
 		jedis.close();
+		save();
 	}
 
 	@Override
