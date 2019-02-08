@@ -30,6 +30,7 @@ public class App extends Application {
 
 		tabPane.getTabs().add(createTabPane("Jeu", new DeView()));
 		tabPane.getTabs().add(createTabPane("HighScore", new HighScoreView()));
+		tabPane.getTabs().add(createTabPane("Règle", new RegleView()));
 
 		root.getChildren().add(tabPane);
 		primaryStage.setScene(new Scene(root, 350, 250));
