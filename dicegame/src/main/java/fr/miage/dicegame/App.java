@@ -4,6 +4,7 @@ import fr.miage.dicegame.base.DatabaseSingleton;
 import fr.miage.dicegame.core.HighScore;
 import fr.miage.dicegame.ui.DeView;
 import fr.miage.dicegame.ui.HighScoreView;
+import fr.miage.dicegame.ui.RegleView;
 import fr.miage.dicegame.ui.View;
 import javafx.application.Application;
 import javafx.scene.Scene;
