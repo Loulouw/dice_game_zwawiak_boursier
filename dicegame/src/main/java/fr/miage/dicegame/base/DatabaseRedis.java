@@ -12,19 +12,19 @@ public class DatabaseRedis extends Database {
 	private Jedis jedis;
 	
 	public DatabaseRedis() {
-		jedis = new Jedis("hostname.redislabs.com", 6379);
-	    jedis.auth("password");
 	}
 	
 	
 	@Override
 	public void load() {
+		jedis = new Jedis("localhost", 6379);
 		try {
 			List<Entree> entrees = new ArrayList<>();
 
 			String res = "";
 			res = jedis.rpop("Id");
-			while (!res.isEmpty()) {
+			System.out.println(res);
+			while (res != null && res != "" ) {
 				Entree e = new Entree(0, "", 0);
 				e.setId(Long.parseLong(res));
 				e.setName(jedis.rpop("Name"));
@@ -41,19 +41,22 @@ public class DatabaseRedis extends Database {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		jedis.close();
 	}
 
 	@Override
 	public void save() {
+		jedis = new Jedis("localhost", 6379);
 		try {
 			for (Entree e : HighScore.getInstance().getEntrees()) {
-				jedis.lpush("Id", e.getId() + "");
-				jedis.lpush("Name", e.getName());
-				jedis.lpush("Score", e.getScore() + "");
+				jedis.rpush("Id", e.getId() + "");
+				jedis.rpush("Name", e.getName());
+				jedis.rpush("Score", e.getScore() + "");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		jedis.close();
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public final class DatabaseSingleton {
 	
 	private DatabaseSingleton() {
 		int r = new Random().nextInt(3);
-		switch (2) {
+		switch (r) {
 		case 0:
 			database = DatabaseFactory.getDatabase(new RedisFactory());
 			break;

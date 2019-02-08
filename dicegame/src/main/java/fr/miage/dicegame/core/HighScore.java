@@ -10,7 +10,7 @@ import fr.miage.dicegame.base.DatabaseSingleton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public final class HighScore extends Observable implements Serializable {
+public final class HighScore implements Serializable {
 
 	private static final long serialVersionUID = -1356324523504304014L;
 
@@ -33,8 +33,6 @@ public final class HighScore extends Observable implements Serializable {
 		sortList();
 
 		DatabaseSingleton.getInstance().getDatabase().save();
-		this.setChanged();
-		this.notifyObservers();
 	}
 
 	public List<Entree> getEntrees() {

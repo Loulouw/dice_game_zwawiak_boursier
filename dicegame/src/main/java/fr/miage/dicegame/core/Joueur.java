@@ -2,7 +2,7 @@ package fr.miage.dicegame.core;
 
 import java.util.Observable;
 
-public class Joueur extends Observable {
+public class Joueur {
 
 	private String name;
 	private int score;
